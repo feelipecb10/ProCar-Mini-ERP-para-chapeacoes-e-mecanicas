@@ -7,6 +7,9 @@ import Profile from './pages/Profile';
 import NewIncident from './pages/NewIncident';
 import Dashboard from './pages/Dashboard';
 import CadastroClientes from './pages/CadastroClientes';
+import ListarClientes from './pages/ListarClientes';
+import AdicionarProdutos from './pages/AdicionarProdutos';
+import ListarProdutos from './pages/ListarProdutos';
 
 export default function Routes() {
     return (
@@ -19,6 +22,9 @@ export default function Routes() {
 
                 <Route path="/dashboard" component={Dashboard} />
                 <Route path="/cadastro-clientes" component={CadastroClientes} />
+                <Route path="/listar-clientes" component={ListarClientes} />
+                <Route path="/adicionar-produtos" component={AdicionarProdutos} />
+                <Route path="/listar-produtos" component={ListarProdutos} />
             </Switch>
         </BrowserRouter>
     );

@@ -1,0 +1,99 @@
+.menu {
+    background-color: black;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+/*.cadastro-container{
+    width: 100%;
+    max-width: 1120px;
+    height: auto;
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}*/
+
+.cadastro-container .content{
+    width: 100%;
+    /*padding: 70px 0 20px 0;*/
+    background: #f0f0f5;
+    box-shadow: 0 0 100px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+
+    /*background-image: url(../../assets/logo2.png);
+    background-repeat: no-repeat;
+    background-position: center;*/
+}
+
+.cadastro-container .content form{
+    width: 100%;
+    max-width: 450px;    
+}
+
+.cadastro-container .content form input {
+    margin-top: 4px;
+    height: 35px;
+
+    box-shadow: 5px 5px 10px #0076a3;
+    box-shadow: 5px 5px 10px #0076a3;
+    -webkit-box-shadow: 5px 5px 10px #0076a3;
+    -moz-box-shadow: 5px 5px 10px #0076a3;  
+}
+
+.cadastro-container .content form .input-group {
+    display: flex;
+}
+
+.cadastro-container .content form .input-group input + input {
+    margin-left: 4px;
+}
+
+.cadastro-container .content form h1 {
+    color: #333;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    text-shadow: #0076a3 1px 2px 5px;
+}
+
+.cadastro-container .content form button {
+    height: 40px;
+    font-weight: bold;
+    line-height: 40px;
+
+    box-shadow: 5px 5px 10px #0076a3;
+    box-shadow: 5px 5px 10px #0076a3;
+    -webkit-box-shadow: 5px 5px 10px #0076a3;
+    -moz-box-shadow: 5px 5px 10px #0076a3;  
+}
+
+.cadastro-container section {
+    width: 100%;
+    max-width: 500px;
+    position: relative;
+    margin-right: 200px;
+    margin-top: 93px;
+    /*padding-top: 100px;*/
+}
+
+.cadastro-container .content section h1 {
+    color: #333;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-shadow: #0076a3 1px 2px 5px;
+    font-weight: 900;
+    font-size: 40px;
+    text-align: center;
+
+
+    /*margin: 64px 0 32px;*/   
+}

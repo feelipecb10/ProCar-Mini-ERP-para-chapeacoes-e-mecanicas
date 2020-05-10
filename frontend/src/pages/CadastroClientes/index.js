@@ -6,36 +6,52 @@ import './styles.css';
 import Menu from '../Menu/index.js';
 import logoImg from '../../assets/logo2.png';
 
-export default function CadastroClientes() {
-    /*const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [cpfcnpj, setCpfCnpj] = useState('');
-    const [telefone, setTelefone] = useState('');
-    const [rua, setRua] = useState('');
-    const [numero, setNumero] = useState('');
-    const [bairro, setBairro] = useState('');
-    const [cidade, setCidade] = useState('');
-    const [uf, setUF] = useState('');
-    const [cep, setCEP] = useState('');
 
-    const history = useHistory();
+export default function CadastroClientes() {
+    const [nome, setNome] = useState('');
+    const [cpf_cnpj, setCpf_Cnpj] = useState('');
+    const [email, setEmail] = useState('');
+    const [telefone, setTelefone] = useState('');
+    const [cidade, setCidade] = useState('');
+    const [bairro, setBairro] = useState('');
+    const [cep, setCEP] = useState('');
+    const [rua, setRua] = useState('');
+    const [n, setN] = useState('');
+    const [uf, setUF] = useState('');
+    const [idUsuario, setIdUsuario] = useState('');
+
+
+    /*const history = useHistory();*/
 
     async function handleRegister(e) {
-        e.preventDefault();*/
+        e.preventDefault();
 
-        /*const data = {
-            name,
-            email,
-            cpfcnpj,
+        const data = {
+            nome,
+            cpf_cnpj,
+            email,            
             telefone,
-            rua,
-            numero,
-            bairro,
             cidade,
-            uf,
+            bairro,
             cep,
-        };*/
+            rua,
+            n,           
+            uf,
+            idUsuario,
+        };
 
+        /*api.post('cliente', data);*/
+        try {
+            /*const response = await*/ 
+            api.post('cliente', data);
+
+            /*alert(`Seu ID de acesso: ${response.data.idUsuario}`);*/
+
+            /*history.push('/');*/
+        } catch(err) {
+            alert('Erro no cadastro, tente novamente.');
+        }
+    }
 
     return (        
         <div className="cadastro-container">
@@ -49,69 +65,69 @@ export default function CadastroClientes() {
                     <img src={logoImg} alt="Logo" />
                 </section>
                 
-                <form>
+                <form onSubmit={handleRegister}>
                     <h1>Dados Gerais</h1>
                     <input
                      placeholder="Nome Completo"
-                     /*value={name}
-                     onChange={e => setName(e.target.value)}*/   
+                     value={nome}
+                     onChange={e => setNome(e.target.value)}   
                     />
                     <input
                     type="email" 
                     placeholder="Email/Opcional"
-                    /*value={email}
-                    onChange={e => setEmail(e.target.value)}*/
+                    value={email}
+                    onChange={e => setEmail(e.target.value)}
                     />
                     <input 
                     placeholder="CPF/CNPJ"
-                    /*value={cpfcnpj}
-                    onChange={e => setCpfCnpj(e.target.value)}*/
+                    value={cpf_cnpj}
+                    onChange={e => setCpf_Cnpj(e.target.value)}
                     />
                     <input 
                     placeholder="Telefone"
-                    /*value={telefone}
-                    onChange={e => setTelefone(e.target.value)}*/
+                    value={telefone}
+                    onChange={e => setTelefone(e.target.value)}
                     />
                     <h1>Endereço</h1>
                     <input 
                     placeholder="Rua"
-                    /*value={rua}
-                    onChange={e => setRua(e.target.value)}*/
+                    value={rua}
+                    onChange={e => setRua(e.target.value)}
                     />
                     <input 
                     placeholder="Número"
-                    /*value={numero}
-                    onChange={e => setNumero(e.target.value)}*/
+                    value={n}
+                    onChange={e => setN(e.target.value)}
                     />
                     <input 
                     placeholder="Bairro"
-                    /*value={bairro}
-                    onChange={e => setBairro(e.target.value)}*/
+                    value={bairro}
+                    onChange={e => setBairro(e.target.value)}
                     /> 
 
                     <div className="input-group">                  
                     <input 
                     placeholder="Cidade"
-                    /*value={cidade}
-                    onChange={e => setCidade(e.target.value)}*/
+                    value={cidade}
+                    onChange={e => setCidade(e.target.value)}
                     />
                     <input 
                     placeholder="UF"
                     style={{ width: 80 }} 
-                    /*value={uf}
-                    onChange={e => setUF(e.target.value)}*/
+                    value={uf}
+                    onChange={e => setUF(e.target.value)}
                     />
                     </div>    
 
                     <input 
                     placeholder="CEP"
-                    /*value={cep}
-                    onChange={e => setCEP(e.target.value)}*/
-                    />
+                    value={cep}
+                    onChange={e => setCEP(e.target.value)}
+                    /> 
                     <button className="button" type="submit">Cadastrar</button>                                    
                 </form>
                 
             </div>
         </div>
     )
-}/*}*/
+}

@@ -3,34 +3,49 @@ import { Link, useHistory } from 'react-router-dom';
 import { FiArrowLeft } from 'react-icons/fi';
 import api from '../../services/api';
 import './styles.css';
-import logoImg from '../../assets/logo.svg';
+import logoImg from '../../assets/teste.PNG';
 
 export default function Register() {
-    const [name, setName] = useState('');
+    const [login, setLogin] = useState('');
+    const [senha, setSenha] = useState('');
+    const [cpf_cnpj, setCpf_Cnpj] = useState('');
     const [email, setEmail] = useState('');
-    const [whatsapp, setWhatsapp] = useState('');
-    const [city, setCity] = useState('');
+    const [telefone, setTelefone] = useState('');
+    const [cidade, setCidade] = useState('');
+    const [bairro, setBairro] = useState('');
+    const [cep, setCep] = useState('');
+    const [rua, setRua] = useState('');
+    const [n, setN] = useState('');
     const [uf, setUf] = useState('');
+    
 
     const history = useHistory();
 
     async function handleRegister(e) {
         e.preventDefault();
+        
 
         const data = {
-            name,
+            login,
+            senha,
+            cpf_cnpj,
             email,
-            whatsapp,
-            city,
+            telefone,
+            cidade,
+            bairro, 
+            cep,
+            rua,
+            n,
             uf,
         };
 
         try {
-            const response = await api.post('ongs', data);
+            /*const response = await api.post('usuario', data);*/
+            api.post('usuario', data);
 
-            alert(`Seu ID de acesso: ${response.data.id}`);
+            /*alert(`Seu ID : ${response.data.idUsuario}`);*/
 
-            history.push('/');
+            /*history.push('/');*/
         } catch(err) {
             alert('Erro no cadastro, tente novamente.');
         }
@@ -42,38 +57,49 @@ export default function Register() {
                 <section>
                     <img src={logoImg} alt="logo" />
 
-                    <h1>Cadastro</h1>
-                    <p>Faça seu cadastro, entre na plataforma e ajude pessoas a encontrarem os casos da sua ONG.</p>
+                    <h1>Cadastro de Usuário</h1>
+                    <p>Faça o cadastro de usuário para poder acessar seu Sistema.</p>
 
                     <Link className ="back-link" to="/">
                         <FiArrowLeft size={16} color="#E02041" />
-                        Não tenho cadastro
+                        Já tenho Acesso
                     </Link>
                 </section>
 
                 <form onSubmit={handleRegister}>
                  <input
-                  placeholder="Nome da ONG"
-                  value={name}
-                  onChange={e => setName(e.target.value)}                 
+                  placeholder="Login"
+                  value={login}
+                  onChange={e => setLogin(e.target.value)}              
                  />
                  <input
-                  type="email"
+                  type="password"
+                  placeholder="Senha"
+                  value={senha}
+                  onChange={e => setSenha(e.target.value)}
+                  />
+                 <input
+                  placeholder="CPF/CNPJ"
+                  value={cpf_cnpj}
+                  onChange={e => setCpf_Cnpj(e.target.value)}
+                  />
+                  <input 
                   placeholder="E-mail"
+                  type="email"
                   value={email}
                   onChange={e => setEmail(e.target.value)}
                   />
-                 <input
-                  placeholder="WhatsApp"
-                  value={whatsapp}
-                  onChange={e => setWhatsapp(e.target.value)}
+                  <input 
+                  placeholder="Telefone"
+                  value={telefone}
+                  onChange={e => setTelefone(e.target.value)}
                   />
 
                  <div className="input-group">
                      <input
                       placeholder="Cidade"
-                      value={city}
-                      onChange={e => setCity(e.target.value)}
+                      value={cidade}
+                      onChange={e => setCidade(e.target.value)}
                       />
                      <input 
                      placeholder="UF" 
@@ -82,6 +108,29 @@ export default function Register() {
                      onChange={e => setUf(e.target.value)}
                      />
                  </div>
+                 <input 
+                  placeholder="Bairro"
+                  value={bairro}
+                  onChange={e => setBairro(e.target.value)}
+                  />
+                  <div className="input-group">
+                     <input
+                      placeholder="Rua"
+                      value={rua}
+                      onChange={e => setRua(e.target.value)}
+                      />
+                     <input 
+                     placeholder="Número" 
+                     style={{ width: 120 }} 
+                     value={n}
+                     onChange={e => setN(e.target.value)}
+                     />
+                     </div>
+                     <input 
+                     placeholder="CEP" 
+                     value={cep}
+                     onChange={e => setCep(e.target.value)}
+                     />
 
                  <button className="button" type="submit">Cadastrar</button>
                 </form>

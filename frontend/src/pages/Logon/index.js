@@ -6,12 +6,12 @@ import api from '../../services/api';
 
 import './styles.css';
 
-import logoImg from '../../assets/logo.png';
+import logoImg from '../../assets/teste.PNG';
 import heroesImg from '../../assets/logo2.png';
 
 export default function Logon() {
     const [id, setId] = useState('');
-    const histoy = useHistory();
+    const history = useHistory();
 
     async function handleLogin(e) {
         e.preventDefault();
@@ -22,7 +22,7 @@ export default function Logon() {
             localStorage.setItem('ongId', id);
             localStorage.setItem('ongName', response.data.name);
 
-            histoy.push('/profile');  
+            history.push('/profile');  
         }catch(err) {
             alert('Falha no login, tente novamente.');
         }
@@ -36,23 +36,29 @@ export default function Logon() {
                 <img src={logoImg} alt="Logo" />
 
                 <form onSubmit={handleLogin}>
-                    <h1>Faça seu logon</h1>
+                    <h1>Entrar No Sistema</h1>
 
                     <input 
-                    placeholder="Sua ID"
+                    placeholder="Digite seu Login"
                     value={id}
                     onChange={e => setId(e.target.value)}
+                    />
+                    <input
+                    placeholder="Digite sua senha"
+                    type="password"
+                    /*value={senha}
+                    onChange={e => setSenha(e.target.value)}*/
                     />
                     <button className="button" type="submit">Entrar</button>
 
                     <Link className ="back-link" to="/register">
                         <FiLogIn size={16} color="#E02041" />
-                        Não tenho cadastro
+                        Não tenho acesso
                     </Link>
                 </form>
             </section>
 
-            <img src={heroesImg} alt="Heroes" />
+            
         </div>
     );
 }

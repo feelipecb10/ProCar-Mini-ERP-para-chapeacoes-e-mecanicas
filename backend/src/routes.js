@@ -1,21 +1,23 @@
-const express = require ('express');
+const express = require('express');
 
-const OngController = require('./controllers/OngController');
-const IncidentController = require('./controllers/IncidentController');
-const ProfileController = require('./controllers/ProfileController');
-const SessionController = require('./controllers/SessionController');
+const UsuarioController = require('./controllers/UsuarioController');
+const ClienteController = require('./controllers/ClienteController');
+const SessaoController = require('./controllers/SessaoController');
+const PagarController = require('./controllers/PagarController');
 
 const routes = express.Router();
 
-routes.post('/sessions', SessionController.create);
+routes.get('/pagar', PagarController.index);
+routes.post('/pagar', PagarController.create);
 
-routes.get('/ongs', OngController.index);
-routes.post('/ongs', OngController.create);
+routes.post('/sessao', SessaoController.create);
 
-routes.get('/profile', ProfileController.index);
+routes.get('/usuario', UsuarioController.index);
+routes.post('/usuario', UsuarioController.create);
+routes.delete('/usuario/:idUsuario', UsuarioController.delete);
 
-routes.get('/incidents', IncidentController.index);
-routes.post('/incidents', IncidentController.create);
-routes.delete('/incidents/:id', IncidentController.delete);
-    
+routes.get('/cliente', ClienteController.index);
+routes.post('/cliente', ClienteController.create);
+routes.delete('/cliente/:idCliente', ClienteController.delete);
+
 module.exports = routes;

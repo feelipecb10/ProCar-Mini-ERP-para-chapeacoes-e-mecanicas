@@ -18,10 +18,10 @@ export default function CadastroClientes() {
     const [rua, setRua] = useState('');
     const [n, setN] = useState('');
     const [uf, setUF] = useState('');
-    const [idUsuario, setIdUsuario] = useState('');
+    const idUsuario = localStorage.getItem('usuarioId');
 
 
-    /*const history = useHistory();*/
+    const history = useHistory();
 
     async function handleRegister(e) {
         e.preventDefault();
@@ -37,13 +37,16 @@ export default function CadastroClientes() {
             rua,
             n,           
             uf,
-            idUsuario,
+            idUsuario
         };
 
         /*api.post('cliente', data);*/
         try {
             /*const response = await*/ 
-            api.post('cliente', data);
+           
+            await api.post('cliente', data);
+            alert('Cliente Cadastrado com Sucesso!.');
+
 
             /*alert(`Seu ID de acesso: ${response.data.idUsuario}`);*/
 

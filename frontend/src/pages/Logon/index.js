@@ -7,28 +7,28 @@ import api from '../../services/api';
 import './styles.css';
 
 import logoImg from '../../assets/teste.PNG';
-import heroesImg from '../../assets/logo2.png';
 
 export default function Logon() {
-    const [id, setId] = useState('');
+    const [login, setLogin] = useState('');
+    const [senhaDigitada, setSenha] = useState('');
     const history = useHistory();
 
     async function handleLogin(e) {
         e.preventDefault();
         
         try {
-            const response = await api.post('sessions', { id });
+            const response = await api.post('sessao', { login, senhaDigitada });
 
-            localStorage.setItem('ongId', id);
-            localStorage.setItem('ongName', response.data.name);
-
-            history.push('/profile');  
+            localStorage.setItem('usuarioLogin', login);
+            localStorage.setItem('usuarioId', response.data.idUsuario);
+             
+            history.push('/dashboard');  
+            
         }catch(err) {
-            alert('Falha no login, tente novamente.');
+            alert('Login ou Senha Incorretos!');
         }
 
     }
-
 
     return (
         <div className="logon-container">
@@ -40,14 +40,14 @@ export default function Logon() {
 
                     <input 
                     placeholder="Digite seu Login"
-                    value={id}
-                    onChange={e => setId(e.target.value)}
+                    value={login}
+                    onChange={e => setLogin(e.target.value)}
                     />
                     <input
                     placeholder="Digite sua senha"
                     type="password"
-                    /*value={senha}
-                    onChange={e => setSenha(e.target.value)}*/
+                    value={senhaDigitada}
+                    onChange={e => setSenha(e.target.value)}
                     />
                     <button className="button" type="submit">Entrar</button>
 

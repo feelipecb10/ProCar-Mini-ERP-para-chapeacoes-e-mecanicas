@@ -1,6 +1,7 @@
 const connection = require('../database/connection');
 const crypto = require('crypto');
 const alg = 'aes-256-ctr';
+const pwd = 'administracaoprocarsystem2020';
 
 module.exports = {
     async create(request, response) {
@@ -17,14 +18,14 @@ module.exports = {
         .first();
 
         if(!usuario) {
-            return response.status(400).json({ error: 'Não há um usuário com esse login!'});
+            return response.status(400).json({ error: 'Usuario ou senha incorreto!'});
         }else{
-            const decipher = crypto.createDecipher(alg, senhaDigitada)
-            const plain = decipher.update('2c1b3b6f', 'hex', 'utf8')
-                if(senhaDigitada == plain) {
-                    return response.json(usuario);
+            const cipher = crypto.createCipher(alg, pwd)
+            const senha = cipher.update(senhaDigitada, 'utf8', 'hex')
+                if(senha == valor.senha) {
+                    return response.json(usuario.idUsuario);
                 }else{
-                    return response.status(400).json({ error: 'Senha digitada é invalida!'});
+                    return response.status(400).json({ error: 'Usuario ou senha incorreto!'});
           }
         }
     }

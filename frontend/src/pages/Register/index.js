@@ -7,7 +7,7 @@ import logoImg from '../../assets/teste.PNG';
 
 export default function Register() {
     const [login, setLogin] = useState('');
-    const [senha, setSenha] = useState('');
+    const [crip, setCrip] = useState('');
     const [cpf_cnpj, setCpf_Cnpj] = useState('');
     const [email, setEmail] = useState('');
     const [telefone, setTelefone] = useState('');
@@ -24,10 +24,11 @@ export default function Register() {
     async function handleRegister(e) {
         e.preventDefault();
         
+        
 
         const data = {
             login,
-            senha,
+            crip,
             cpf_cnpj,
             email,
             telefone,
@@ -41,13 +42,17 @@ export default function Register() {
 
         try {
             /*const response = await api.post('usuario', data);*/
-            api.post('usuario', data);
+            await api.post('usuario', data);
+            alert('Cadastrado com Sucesso!.');
+            history.push('/');
 
             /*alert(`Seu ID : ${response.data.idUsuario}`);*/
 
-            /*history.push('/');*/
+            
         } catch(err) {
             alert('Erro no cadastro, tente novamente.');
+            /*console.log(err);*/
+
         }
     }
 
@@ -75,8 +80,8 @@ export default function Register() {
                  <input
                   type="password"
                   placeholder="Senha"
-                  value={senha}
-                  onChange={e => setSenha(e.target.value)}
+                  value={crip}
+                  onChange={e => setCrip(e.target.value)}
                   />
                  <input
                   placeholder="CPF/CNPJ"

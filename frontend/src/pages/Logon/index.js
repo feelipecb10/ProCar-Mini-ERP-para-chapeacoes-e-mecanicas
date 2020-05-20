@@ -11,18 +11,20 @@ import logoImg from '../../assets/teste.PNG';
 export default function Logon() {
     const [login, setLogin] = useState('');
     const [senhaDigitada, setSenha] = useState('');
-    const history = useHistory();
+    const histoy = useHistory();
 
     async function handleLogin(e) {
         e.preventDefault();
         
         try {
             const response = await api.post('sessao', { login, senhaDigitada });
+            /*alert(response.data);*/
 
             localStorage.setItem('usuarioLogin', login);
-            localStorage.setItem('usuarioId', response.data.idUsuario);
+            /*var jsonAux = JSON.stringify(response.data.idUsuario);*/
+            localStorage.setItem('idUsuario', response.data);
              
-            history.push('/dashboard');  
+            histoy.push('/dashboard');  
             
         }catch(err) {
             alert('Login ou Senha Incorretos!');

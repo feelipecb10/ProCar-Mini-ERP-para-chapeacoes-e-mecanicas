@@ -8,13 +8,44 @@
 
 .listar-clientes-container .content{
     width: 100%;
-    /*padding: 70px 0 20px 0;*/
+    padding: 60px 0 20px 0;
     background: #f0f0f5;
     box-shadow: 0 0 100px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
-    display: flex;
+    display: list-item;
     justify-content: space-between;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
 }
+
+.listar-clientes-container .content h1{
+    color: #333;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-shadow: #0076a3 1px 2px 5px;
+    font-weight: 900;
+    font-size: 40px;
+    text-align: center;
+}
+
+.listar-clientes-container .content table{
+    text-align: center;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.listar-clientes-container .content table tr{
+    background-color: #f0f0f5;
+    height: 35px;    
+}
+
+.listar-clientes-container .content table tr th,td{
+    border-radius: 8px;
+    border-style: initial;
+    border-color:black;
+    box-shadow: 5px 5px 10px #0076a3;
+    box-shadow: 5px 5px 10px #0076a3;
+    -webkit-box-shadow: 5px 5px 10px #0076a3;
+    -moz-box-shadow: 5px 5px 10px #0076a3;      
+}
+

@@ -3,8 +3,13 @@ import { Link, useHistory } from 'react-router-dom';
 import { FiLogIn, FiPower } from 'react-icons/fi';
 import api from '../../services/api';
 import './styles.css';
-import logoImg from '../../assets/logo.svg';
-import carroImg from '../../assets/carro.png';
+
+/*const history = useHistory();*/
+
+function Logout() {
+    localStorage.clear();
+    /*history.push('/logon');*/
+  }
 
 export default class Menu extends Component {
     render(){
@@ -45,7 +50,7 @@ export default class Menu extends Component {
         </div>
         
         <div class="buttonSair">
-        <button type="button">
+        <button type="button" onClick={Logout}>
           <FiPower size={18} color="#E02041" />
         </button>
         </div>

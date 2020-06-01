@@ -4,7 +4,7 @@ import { FiLogIn, FiPower } from 'react-icons/fi';
 import api from '../../services/api';
 import './styles.css';
 import Menu from '../Menu/index.js';
-import logoImg from '../../assets/logo2.png';
+
 
 export default function AdicionarProdutos() {
     return(
@@ -14,7 +14,24 @@ export default function AdicionarProdutos() {
             </div>
             
             <div className="content">
-                <h1>AdicionarProdutos em Desenvolvimento</h1>
+                <form>
+                <input
+                 placeholder="Descrição"
+                 /*value={descricao}
+                 onChange={e => setDescricao(e.target.value)}*/
+                />
+                <input
+                placeholder="Quantidade"
+                /*value={quantidade}
+                onChange={e => setQuantidade(e.target.value)}*/
+                />
+                <input
+                placeholder="Valor"
+                /*value={valor}
+                onChange={e => setValor(e.target.value)}*/
+                />
+                <button className="button" type="submit">Cadastrar</button> 
+                </form>
             </div>
         </div>    
     )

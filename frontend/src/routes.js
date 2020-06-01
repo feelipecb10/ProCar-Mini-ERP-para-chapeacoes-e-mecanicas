@@ -10,6 +10,7 @@ import CadastroClientes from './pages/CadastroClientes';
 import ListarClientes from './pages/ListarClientes';
 import AdicionarProdutos from './pages/AdicionarProdutos';
 import ListarProdutos from './pages/ListarProdutos';
+import CadastroContas from './pages/CadastrarContas';
 
 export default function Routes() {
     return (
@@ -25,6 +26,7 @@ export default function Routes() {
                 <Route path="/listar-clientes" component={ListarClientes} />
                 <Route path="/adicionar-produtos" component={AdicionarProdutos} />
                 <Route path="/listar-produtos" component={ListarProdutos} />
+                <Route path="/cadastrar-contas" component={CadastroContas} />
             </Switch>
         </BrowserRouter>
     );

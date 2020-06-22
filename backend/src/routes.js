@@ -3,13 +3,22 @@ const express = require('express');
 const UsuarioController = require('./controllers/UsuarioController');
 const ClienteController = require('./controllers/ClienteController');
 const SessaoController = require('./controllers/SessaoController');
-const PagarController = require('./controllers/PagarController');
+const Lancamento_finanController = require('./controllers/Lancamento_finanController');
+const Baixa_finanController = require('./controllers/Baixa_finanController');
+const ProdutosController = require('./controllers/ProdutosController');
 
 const routes = express.Router();
 
-routes.get('/pagar', PagarController.index);
-routes.post('/pagar', PagarController.create);
-routes.delete('/pagar/:idFinanceiro', PagarController.delete);
+routes.get('/produto', ProdutosController.index);
+routes.post('/produto', ProdutosController.create);
+routes.delete('/produto/:idProduto', ProdutosController.delete);
+
+routes.get('/baixa', Baixa_finanController.index);
+routes.post('/baixa/:idFinanceiro', Baixa_finanController.update);
+
+routes.get('/lancamento', Lancamento_finanController.index);
+routes.post('/lancamento', Lancamento_finanController.create);
+routes.post('/lancamento/:idFinanceiro', Lancamento_finanController.update);
 
 routes.post('/sessao', SessaoController.create);
 
@@ -19,7 +28,7 @@ routes.delete('/usuario/:idUsuario', UsuarioController.delete);
 
 routes.get('/cliente', ClienteController.index);
 routes.post('/cliente', ClienteController.create);
-//routes.put('/cliente', ClienteController.update);
+routes.post('/cliente/:idCliente', ClienteController.update);
 routes.delete('/cliente/:idCliente', ClienteController.delete);
 
 module.exports = routes;

@@ -1,9 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { FiArrowLeft } from 'react-icons/fi';
 import api from '../../services/api';
 import './styles.css';
 import logoImg from '../../assets/teste.PNG';
+import axios from 'axios';
+
+/*
+useEffect(() => {
+    axios.get('https://servicodados.ibge.gov.br/api/v1/localidades/estados').then(response => {
+      const ufSigla = response.data.map(uf => uf.sigla);
+    });
+  }, []);*/
 
 export default function Register() {
     const [login, setLogin] = useState('');
@@ -111,6 +119,7 @@ export default function Register() {
                      style={{ width: 80 }} 
                      value={uf}
                      onChange={e => setUf(e.target.value)}
+                     
                      />
                  </div>
                  <input 
@@ -141,5 +150,6 @@ export default function Register() {
                 </form>
             </div>
         </div>
+        
     );
 }

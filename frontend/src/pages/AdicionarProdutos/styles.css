@@ -1,13 +1,13 @@
-.menu {
-    background-color: black;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
+#page-AdicionarProdutos {
+    margin: 0;
+    min-height: 657px;
 }
 
+#page-AdicionarProdutos .menu {
+    position: fixed;
+} 
 
-.adicionar-produtos-container .content{
+#page-AdicionarProdutos .content{
     width: 100%;
     /*padding: 70px 0 20px 0;*/
     background: #f0f0f5;
@@ -18,4 +18,73 @@
     align-items: center;
     justify-content: center;
     min-height: 100vh;
+}
+
+#page-AdicionarProdutos form {
+    width: 100%;
+    max-width: 450px; 
+    
+}
+
+#page-AdicionarProdutos .content form input {
+    margin-top: 4px;
+    height: 35px;
+
+    box-shadow: 5px 5px 10px #0076a3;
+    box-shadow: 5px 5px 10px #0076a3;
+    -webkit-box-shadow: 5px 5px 10px #0076a3;
+    -moz-box-shadow: 5px 5px 10px #0076a3;  
+}
+
+#page-AdicionarProdutos .content form h1 {
+    color: #333;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    text-shadow: #0076a3 1px 2px 5px;
+}
+
+#page-AdicionarProdutos .content form button {
+    height: 40px;
+    font-weight: bold;
+    line-height: 40px;
+
+    box-shadow: 5px 5px 10px #0076a3;
+    box-shadow: 5px 5px 10px #0076a3;
+    -webkit-box-shadow: 5px 5px 10px #0076a3;
+    -moz-box-shadow: 5px 5px 10px #0076a3;  
+}
+
+#page-AdicionarProdutos section {
+    width: 100%;
+    max-width: 500px;
+    position: relative;
+    margin-right: 200px;
+    margin-top: 93px;
+    /*padding-top: 100px;*/
+}
+
+#page-AdicionarProdutos .content section h1 {
+    color: #333;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-shadow: #0076a3 1px 2px 5px;
+    font-weight: 900;
+    font-size: 40px;
+    text-align: center;
+
+
+    /*margin: 64px 0 32px;*/   
+}
+
+#page-AdicionarProdutos .content form label{
+    color: #333;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-shadow: #0076a3 1px 2px 5px;
+    font-size: 20px;
+    width: 100%;
+}
+
+select{
+    width: 100%;
 }

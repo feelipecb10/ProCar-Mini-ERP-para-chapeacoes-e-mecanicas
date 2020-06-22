@@ -39,6 +39,16 @@ export default function ListarClientes() {
         }
     }
 
+    async function enviaIDCliente(idCliente){
+        console.log('Entrei envia id cliente');
+        api.get('cliente', {
+            headers: {
+                autorizacao: idUsuario,
+            }
+            }).then(response => {
+            localStorage.setItem('idCliente', idCliente);
+            })
+    }
 
     return(
         <div className="listar-clientes-container">
@@ -68,7 +78,8 @@ export default function ListarClientes() {
                     <td>{cliente.telefone}</td>
                     <td>{cliente.cidade}</td>
                     <td>{cliente.uf}</td>
-                    <td><FiEdit size={23} color="black" cursor="pointer" /><MdDeleteForever size={23} color="black" cursor="pointer" onClick={() => deleteCliente(cliente.idCliente)} /></td>
+                    <td><Link to="/update-cliente"><FiEdit size={23} color="black" cursor="pointer"/></Link>
+                    <MdDeleteForever size={23} color="black" cursor="pointer" onClick={() => deleteCliente(cliente.idCliente)} /></td>
                 </tr>
                 ))}
                 </table>

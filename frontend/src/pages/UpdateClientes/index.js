@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { FiLogIn, FiPower } from 'react-icons/fi';
 import api from '../../services/api';
@@ -20,14 +20,12 @@ export default function CadastroClientes() {
     const [n, setN] = useState('');
     const [uf, setUF] = useState('');
     const idUsuario = localStorage.getItem('idUsuario');
+    const idCliente = localStorage.getItem('idCliente');
+
 
     const history = useHistory();
-    
 
-    async function handleRegister(e) {
-        e.preventDefault();
-        
-
+    async function updateCliente(idCliente){
         const data = {
             nome,
             cpf_cnpj,
@@ -42,23 +40,32 @@ export default function CadastroClientes() {
             /*idUsuario,*/
         };
 
-        
-        try {
-            /*alert(`Seu ID de acesso: ${idUsuario}`);*/          
-            await api.post('cliente', data, {
+        try{
+            console.log('cheguei aqui');
+            await api.put(`cliente/${idCliente}`, data, { 
                 headers: {
                     autorizacao: idUsuario,
                 }
-            })
-            alert('Cliente Cadastrado com Sucesso!');
-            history.push('/listar-clientes');
-            /*alert(`Seu ID de acesso: ${response.data.idUsuario}`);*/
-
-            /*history.push('/');*/
-        } catch(err) {
-            alert('Erro no cadastro, tente novamente.');
+            });
+        }catch(err){
+            alert('Erro ao Modificar Cliente, tente novamente.');
         }
     }
+
+
+    /*
+    const [clientes, setClientes] = useState([]);
+    useEffect(() => {
+        api.get('cliente', {
+        headers: {
+            autorizacao: idUsuario,
+        }
+        }).then(response => {
+        setClientes(response.data);
+        })
+    }, [idUsuario]);*/
+
+
 
     return (        
         <div className="cadastro-container">
@@ -68,12 +75,12 @@ export default function CadastroClientes() {
             
             <div className="content">
                 <section>
-                    <h1>Cadastro de Clientes</h1>
+                    <h1>Update de Clientes</h1>
                     <img src={logoImg} alt="Logo" />
                 </section>
                 
-                <form onSubmit={handleRegister}>
-                    <h1>Dados Gerais</h1>
+                <form onSubmit={updateCliente}>
+                    <h1>Dados Gerais</h1>                    
                     <input
                      placeholder="Nome Completo"
                      value={nome}
@@ -131,7 +138,7 @@ export default function CadastroClientes() {
                     value={cep}
                     onChange={e => setCEP(e.target.value)}
                     /> 
-                    <button className="button" type="submit">Cadastrar</button>                                    
+                    <button className="button" type="submit" /*onClick={() => updateCliente(cliente.idCliente)}*/>Atualizar</button>                                    
                 </form>
                 
             </div>

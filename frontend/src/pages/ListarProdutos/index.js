@@ -59,24 +59,28 @@ export default function ListarProdutos() {
                  
 
                 <table>
-                <tr>
-                    <th>ID</th>
-                    <th>Descricao</th>
-                    <th>Quantidade</th>
-                    <th>Valor</th>
-                    <th>EDITAR OU REMOVER</th>
-                </tr> 
-                
-                {produtos.map(produto => (
-                    <tr key={produto.idProduto}>
-                    <td>{produto.idProduto}</td>
-                    <td>{produto.descricao}</td>
-                    <td>{produto.quantidade}</td>
-                    <td>{produto.valor}</td>
-                    <td><FiEdit size={23} color="black" cursor="pointer"/>
-                    <MdDeleteForever  size={23} color="black" cursor="pointer" onClick={() => deleteProduto(produto.idProduto)} /></td>
-                </tr>
-                ))}
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Descricao</th>
+                            <th>Quantidade</th>
+                            <th>Valor</th>
+                            <th>EDITAR OU REMOVER</th>
+                        </tr> 
+                    </thead>
+
+                    <tbody>
+                        {produtos.map(produto => (
+                            <tr key={produto.idProduto}>
+                            <td>{produto.idProduto}</td>
+                            <td>{produto.descricao}</td>
+                            <td>{produto.quantidade}</td>
+                            <td>{produto.valor}</td>
+                            <td><FiEdit size={23} color="black" cursor="pointer"/>
+                            <MdDeleteForever  size={23} color="black" cursor="pointer" onClick={() => deleteProduto(produto.idProduto)} /></td>
+                        </tr>
+                        ))}
+                   </tbody>
                 </table>
             </div>
         </div>    

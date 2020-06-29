@@ -48,6 +48,11 @@
     height: 45px;
 }
 
+.register-container .content form select {
+    margin-top: 8px;
+    height: 45px;
+}
+
 .register-container .content form button {
     height: 45px;
     font-weight: bold;
@@ -58,6 +63,6 @@
     display: flex;
 }
 
-.register-container .content form .input-group input + input {
+.register-container .content form .input-group select + input {
     margin-left: 8px;
 }

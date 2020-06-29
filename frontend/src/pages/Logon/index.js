@@ -22,7 +22,7 @@ export default function Logon() {
 
             localStorage.setItem('usuarioLogin', login);
             /*var jsonAux = JSON.stringify(response.data.idUsuario);*/
-            localStorage.setItem('idUsuario', response.data);
+            localStorage.setItem('idUsuario', parseInt(response.data));
              
             histoy.push('/dashboard');  
             

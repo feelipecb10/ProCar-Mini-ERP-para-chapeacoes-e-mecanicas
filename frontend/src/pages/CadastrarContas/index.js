@@ -60,16 +60,11 @@ export default function CadastroContas(){
              <img src={logoImg} alt="Logo" />
             </section>
 
-            <form onSubmit={RegistrarFinanceiro}>
-
-
-                
-
-              
+            <form onSubmit={RegistrarFinanceiro}>     
 
                 <label>Tipo do titulo</label>
-                <select name="tipo-titulo" onChange={e => setTipo_Titulo(e.target.value)} >
-                    <option value="" selected disabled>Selecione</option>
+                <select defaultValue="" name="tipo-titulo" onChange={e => setTipo_Titulo(e.target.value)} >
+                    <option value="" disabled>Selecione</option>
                     <option value="RECEBER">RECEBER</option>
                     <option value="PAGAR">PAGAR</option>
                 </select>

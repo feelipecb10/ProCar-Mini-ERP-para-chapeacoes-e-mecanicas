@@ -64,6 +64,44 @@ export default function Register() {
         }
     }
 
+    const [ufs, setUfs] = useState([]);
+    //const [selectedUf, setSelectedUf] = useState('0');
+    const [cities, setCities] = useState([]);
+    //const [selectedCity, setSelectedCity] = useState('0');
+
+    useEffect(() => {
+        axios.get('https://servicodados.ibge.gov.br/api/v1/localidades/estados').then(response => {
+            const ufInitials = response.data.map(uf => uf.sigla);
+
+            setUfs(ufInitials);
+        });
+    }, []);
+
+    useEffect(() => {
+        if (uf === "0") {
+            return;
+        }
+
+        axios.get(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${uf}/municipios`).then(response => {
+            const cityNames = response.data.map(city => city.nome);
+
+            setCities(cityNames);
+
+      });
+    }, [uf]);
+
+    function handleSelectUf(event) {
+        const uf = event.target.value;
+
+        setUf(uf);
+    }
+
+    function handleSelectCity(event) {
+        const city = event.target.value;
+
+        setCidade(city);
+    }
+
     return (
         <div className="register-container">
             <div className="content">
@@ -109,18 +147,32 @@ export default function Register() {
                   />
 
                  <div className="input-group">
-                     <input
+
+                     <select onChange={handleSelectUf} value={uf}  name="uf" id="uf" style={{ width: 200 }} >
+                        <option value="0">UF</option>
+                        {ufs.map(uf => (
+                            <option key={uf} value={uf}>{uf}</option>
+                        ))}
+                     </select>
+
+                     <select name="city" id="city" value={cidade} onChange={handleSelectCity} >
+                        <option value="0">Cidade</option>
+                        {cities.map(city => (
+                            <option key={city} value={city}>{city}</option>
+                        ))}
+                     </select>
+
+                      {/*<input
                       placeholder="Cidade"
                       value={cidade}
                       onChange={e => setCidade(e.target.value)}
                       />
-                     <input 
+                    <input 
                      placeholder="UF" 
                      style={{ width: 80 }} 
                      value={uf}
-                     onChange={e => setUf(e.target.value)}
-                     
-                     />
+                     onChange={e => setUf(e.target.value)}                     
+                     />*/}
                  </div>
                  <input 
                   placeholder="Bairro"

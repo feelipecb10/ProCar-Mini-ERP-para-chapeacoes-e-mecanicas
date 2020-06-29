@@ -60,28 +60,32 @@ export default function ListarClientes() {
                 
                 <h1>Clientes Cadastrados</h1>
                 <table>
-                <tr>
-                    <th>ID</th>
-                    <th>NOME</th>
-                    <th>E-MAIL</th>
-                    <th>TELEFONE</th>
-                    <th>CIDADE</th>
-                    <th>UF</th>
-                    <th>EDITAR OU REMOVER</th>
-                </tr> 
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>NOME</th>
+                            <th>E-MAIL</th>
+                            <th>TELEFONE</th>
+                            <th>CIDADE</th>
+                            <th>UF</th>
+                            <th>EDITAR OU REMOVER</th>
+                        </tr> 
+                    </thead>   
 
-                {clientes.map(cliente => (
-                    <tr key={cliente.idCliente}>
-                    <td>{cliente.idCliente}</td>
-                    <td>{cliente.nome}</td>
-                    <td>{cliente.email}</td>
-                    <td>{cliente.telefone}</td>
-                    <td>{cliente.cidade}</td>
-                    <td>{cliente.uf}</td>
-                    <td><Link to="/update-cliente"><FiEdit size={23} color="black" cursor="pointer"/></Link>
-                    <MdDeleteForever size={23} color="black" cursor="pointer" onClick={() => deleteCliente(cliente.idCliente)} /></td>
-                </tr>
-                ))}
+                    <tbody>
+                        {clientes.map(cliente => (
+                            <tr key={cliente.idCliente}>
+                            <td>{cliente.idCliente}</td>
+                            <td>{cliente.nome}</td>
+                            <td>{cliente.email}</td>
+                            <td>{cliente.telefone}</td>
+                            <td>{cliente.cidade}</td>
+                            <td>{cliente.uf}</td>
+                            <td><Link to="/update-cliente"><FiEdit size={23} color="black" cursor="pointer"/></Link>
+                            <MdDeleteForever size={23} color="black" cursor="pointer" onClick={() => deleteCliente(cliente.idCliente)} /></td>
+                        </tr>
+                        ))}
+                    </tbody> 
                 </table>
                             
             </div>

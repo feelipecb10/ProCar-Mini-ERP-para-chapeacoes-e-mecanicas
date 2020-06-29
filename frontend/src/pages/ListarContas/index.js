@@ -27,8 +27,9 @@ export default function ListarContas() {
     }, [idUsuario]);
 
 
-    async function deleteConta(idFinanceiro) {
+    async function updateConta(idFinanceiro) {
         try{
+        console.log(idUsuario, idFinanceiro);
          await api.post(`lancamento/${idFinanceiro}`, {
            headers: {
              autorizacao: idUsuario,
@@ -45,6 +46,7 @@ export default function ListarContas() {
     
     return(
         <div className="listar-contas-container">
+
             <div className="menu">
                 <Menu />
             </div>
@@ -53,37 +55,41 @@ export default function ListarContas() {
                 <h1>Contas Cadastradas</h1>    
 
                 <label>Selecione o Tipo de Conta:</label>
-                <select name="tipoTitulo" onClick={e => setTipoTitulo(e.target.value) }>
-                    <option value="" selected disabled>Selecione</option>
+
+                <select defaultValue="" name="tipoTitulo" onClick={e => setTipoTitulo(e.target.value) }>
+                    <option value="" disabled>Selecione</option>
                     <option value="RECEBER">RECEBER</option>
                     <option value="PAGAR">PAGAR</option>
                 </select>
 
                 <table>
-                <tr>
-                    <th>ID</th>
-                    <th>Número Documento</th>
-                    <th>Tipo Titulo</th>
-                    <th>Data Lançamento</th>
-                    <th>Data Emissão</th>
-                    <th>Data Vencimento</th>
-                    <th>EDITAR OU REMOVER</th>
-                </tr> 
-                
-                {contas.filter(contas => contas.tipo_titulo == tipoTitulo ).map(conta => (
-                    <tr key={conta.idFinanceiro}>
-                    <td>{conta.idFinanceiro}</td>
-                    <td>{conta.numero_documento}</td>
-                    <td>{conta.tipo_titulo}</td>
-                    <td>{conta.data_lancamento}</td>
-                    <td>{conta.data_emissao}</td>
-                    <td>{conta.data_vencimento}</td>
-                    <td><FiEdit size={23} color="black" cursor="pointer"/>
-                    <MdDeleteForever  size={23} color="black" cursor="pointer" onClick={() => deleteConta(conta.idFinanceiro)} /></td>
-                </tr>
-                ))}
-                </table>
-                            
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Número Documento</th>
+                            <th>Tipo Titulo</th>
+                            <th>Data Lançamento</th>
+                            <th>Data Emissão</th>
+                            <th>Data Vencimento</th>
+                            <th>EDITAR OU REMOVER</th>
+                        </tr> 
+                    </thead>
+
+                    <tbody>
+                        {contas.filter(contas => contas.tipo_titulo == tipoTitulo ).map(conta => (
+                            <tr key={conta.idFinanceiro}>
+                            <td>{conta.idFinanceiro}</td>
+                            <td>{conta.numero_documento}</td>
+                            <td>{conta.tipo_titulo}</td>
+                            <td>{conta.data_lancamento}</td>
+                            <td>{conta.data_emissao}</td>
+                            <td>{conta.data_vencimento}</td>
+                            <td><FiEdit size={23} color="black" cursor="pointer"/>
+                            <MdDeleteForever  size={23} color="black" cursor="pointer" onClick={() => updateConta(conta.idFinanceiro)} /></td>
+                        </tr>
+                        ))}
+                    </tbody>    
+                </table>                            
             </div>
         </div>    
     )

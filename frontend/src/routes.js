@@ -3,8 +3,6 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import Logon from './pages/Logon';
 import Register from './pages/Register';
-import Profile from './pages/Profile';
-import NewIncident from './pages/NewIncident';
 import Dashboard from './pages/Dashboard';
 import CadastroClientes from './pages/CadastroClientes';
 import ListarClientes from './pages/ListarClientes';
@@ -13,6 +11,8 @@ import ListarProdutos from './pages/ListarProdutos';
 import CadastroContas from './pages/CadastrarContas';
 import UpdateClientes from './pages/UpdateClientes';
 import ListarContas from './pages/ListarContas';
+import Orcamento from './pages/Orcamento';
+import ConsultaOrcamento from './pages/ConsultaOrcamento';
 
 export default function Routes() {
     return (
@@ -20,9 +20,6 @@ export default function Routes() {
             <Switch>
                 <Route path="/" exact component={Logon} />
                 <Route path="/register" component={Register} />
-                <Route path="/profile" component={Profile} />
-                <Route path="/incidents/new" component={NewIncident} />
-
                 <Route path="/dashboard" component={Dashboard} />
                 <Route path="/cadastro-clientes" component={CadastroClientes} />
                 <Route path="/listar-clientes" component={ListarClientes} />
@@ -31,6 +28,8 @@ export default function Routes() {
                 <Route path="/cadastrar-contas" component={CadastroContas} />
                 <Route path="/update-cliente" component={UpdateClientes} />
                 <Route path="/listar-contas" component={ListarContas} />
+                <Route path="/gerar-orcamento" component={Orcamento} />
+                <Route path="/consulta-orcamento" component={ConsultaOrcamento} />
             </Switch>
         </BrowserRouter>
     );

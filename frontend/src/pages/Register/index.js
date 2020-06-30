@@ -6,13 +6,6 @@ import './styles.css';
 import logoImg from '../../assets/teste.PNG';
 import axios from 'axios';
 
-/*
-useEffect(() => {
-    axios.get('https://servicodados.ibge.gov.br/api/v1/localidades/estados').then(response => {
-      const ufSigla = response.data.map(uf => uf.sigla);
-    });
-  }, []);*/
-
 export default function Register() {
     const [login, setLogin] = useState('');
     const [crip, setCrip] = useState('');
@@ -31,8 +24,7 @@ export default function Register() {
 
     async function handleRegister(e) {
         e.preventDefault();
-        
-        
+                
 
         const data = {
             login,

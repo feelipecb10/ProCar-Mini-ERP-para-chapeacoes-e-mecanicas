@@ -46,6 +46,11 @@
 .register-container .content form input {
     margin-top: 8px;
     height: 45px;
+
+    box-shadow: 5px 5px 10px #0076a3;
+    box-shadow: 5px 5px 10px #0076a3;
+    -webkit-box-shadow: 5px 5px 10px #0076a3;
+    -moz-box-shadow: 5px 5px 10px #0076a3;  
 }
 
 .register-container .content form select {

@@ -6,8 +6,13 @@ const SessaoController = require('./controllers/SessaoController');
 const Lancamento_finanController = require('./controllers/Lancamento_finanController');
 const Baixa_finanController = require('./controllers/Baixa_finanController');
 const ProdutosController = require('./controllers/ProdutosController');
+const OrcamentoController = require('./controllers/OrcamentoController');
 
 const routes = express.Router();
+
+routes.get('/orcamento', OrcamentoController.index);
+routes.post('/orcamento', OrcamentoController.create);
+routes.delete('/orcamento/:idOrcamento', OrcamentoController.delete);
 
 routes.get('/produto', ProdutosController.index);
 routes.post('/produto', ProdutosController.create);

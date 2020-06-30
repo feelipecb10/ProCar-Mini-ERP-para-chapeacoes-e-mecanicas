@@ -31,7 +31,7 @@ export default function CadastroContas(){
             idCliente,
         };
 
-        console.log(data);
+        /*console.log(data);*/
 
         try{
             await api.post('lancamento', data, {

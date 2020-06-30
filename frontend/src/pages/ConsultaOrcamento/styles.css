@@ -1,0 +1,61 @@
+.menu {
+    background-color: black;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.consulta-orcamento-container .content{
+    width: 100%;
+    padding: 60px 0 20px 0;
+    background: #f0f0f5;
+    box-shadow: 0 0 100px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    display: list-item;
+    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.consulta-orcamento-container .content h1{
+    color: #333;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-shadow: #0076a3 1px 2px 5px;
+    font-weight: 900;
+    font-size: 40px;
+    text-align: center;
+}
+
+.consulta-orcamento-container .content table{
+    text-align: center;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.consulta-orcamento-container .content table tr{
+    background-color: #f0f0f5;
+    height: 35px;    
+}
+
+.consulta-orcamento-container .content table tr th,td,select{
+    border-radius: 8px;
+    border-style: initial;
+    border-color:black;
+    box-shadow: 5px 5px 10px #0076a3;
+    box-shadow: 5px 5px 10px #0076a3;
+    -webkit-box-shadow: 5px 5px 10px #0076a3;
+    -moz-box-shadow: 5px 5px 10px #0076a3;      
+}
+
+.consulta-orcamento-container .content select {
+    width: 15%;
+    margin-left: 1.5%;
+}
+
+.consulta-orcamento-container .content label {
+    font-weight: bold;
+    font-size: 18px;
+    color: #333;
+}

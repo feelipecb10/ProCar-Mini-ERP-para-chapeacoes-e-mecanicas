@@ -8,7 +8,7 @@ import logoImg from '../../assets/logo2.png';
 
 
 
-export default function CadastroClientes() {
+export default function UpdateCliente() {
     const [nome, setNome] = useState('');
     const [cpf_cnpj, setCpf_Cnpj] = useState('');
     const [email, setEmail] = useState('');
@@ -37,12 +37,11 @@ export default function CadastroClientes() {
             rua,
             n,           
             uf,
-            /*idUsuario,*/
         };
 
         try{
             console.log('cheguei aqui');
-            await api.put(`cliente/${idCliente}`, data, { 
+            await api.posts(`cliente/${idCliente}`, data, { 
                 headers: {
                     autorizacao: idUsuario,
                 }
@@ -53,7 +52,7 @@ export default function CadastroClientes() {
     }
 
 
-    /*
+    
     const [clientes, setClientes] = useState([]);
     useEffect(() => {
         api.get('cliente', {
@@ -63,7 +62,7 @@ export default function CadastroClientes() {
         }).then(response => {
         setClientes(response.data);
         })
-    }, [idUsuario]);*/
+    }, [idUsuario]);
 
 
 

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
-import { FiLogIn, FiPower } from 'react-icons/fi';
+import { useHistory } from 'react-router-dom';
 import api from '../../services/api';
 import './styles.css';
 import Menu from '../Menu/index.js';

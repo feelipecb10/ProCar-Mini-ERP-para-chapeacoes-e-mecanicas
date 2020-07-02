@@ -1,17 +1,13 @@
-import React, { useState, Component } from 'react';
-import { Link, useHistory } from 'react-router-dom';
-import { FiLogIn, FiPower } from 'react-icons/fi';
-import api from '../../services/api';
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import { FiPower } from 'react-icons/fi';
 import './styles.css';
-
 
 function Logout() {
     localStorage.clear();
   }
 
-export default class Menu extends Component {
-    
-    
+export default class Menu extends Component {    
     render(){
         return <div className="navbar">
 
@@ -47,16 +43,13 @@ export default class Menu extends Component {
             <Link to="/gerar-orcamento">Gerar Novo</Link>
             <Link to="/consulta-orcamento">Consulta Orçamento</Link>    
             </div>
-        </div>
-        
+        </div>        
         
         <div className="buttonSair">          
         <button type="button" onClick={Logout}>
           <FiPower size={18} color="#E02041" />
         </button>        
-        </div>
-        
-        
+        </div>        
         </div>
     }
 }

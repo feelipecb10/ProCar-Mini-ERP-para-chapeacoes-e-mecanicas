@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
-import { FiLogIn, FiPower } from 'react-icons/fi';
+import { useHistory } from 'react-router-dom';
 import api from '../../services/api';
 import './styles.css';
 import Menu from '../Menu/index.js';
@@ -14,7 +13,7 @@ export default function CadastroContas(){
     const [data_vencimento, setData_Vencimento] = useState('');
     const [valor, setValor] = useState('');
     const idUsuario = localStorage.getItem('idUsuario');
-    const [idCliente, setIDCliente] = useState(''); /*exemplo idCliente Estatico*/
+    const [idCliente, setIDCliente] = useState(''); 
 
     const history = useHistory();
 
@@ -30,8 +29,6 @@ export default function CadastroContas(){
             valor,
             idCliente,
         };
-
-        /*console.log(data);*/
 
         try{
             await api.post('lancamento', data, {
@@ -67,12 +64,7 @@ export default function CadastroContas(){
                     <option value="" disabled>Selecione</option>
                     <option value="RECEBER">RECEBER</option>
                     <option value="PAGAR">PAGAR</option>
-                </select>
-                {/*<input
-                placeholder="Tipo do Titulo"
-                value={tipo_titulo}
-                onChange={e => setTipo_Titulo(e.target.value)} 
-                />  */}             
+                </select>           
                 <label>Número Documento</label>
                 <input
                 placeholder="Número Documento"

@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
-import { FiLogIn, FiPower } from 'react-icons/fi';
+import { useHistory } from 'react-router-dom';
 import api from '../../services/api';
 import './styles.css';
 import Menu from '../Menu/index.js';
 import logoImg from '../../assets/logo2.png';
-
 
 export default function AdicionarProdutos() {
     const [descricao, setDescricao] = useState('');
@@ -37,8 +35,6 @@ export default function AdicionarProdutos() {
             alert('Erro ao cadastrar produto!');
         }
     }
-
-
 
     return(
         <div id="page-AdicionarProdutos">

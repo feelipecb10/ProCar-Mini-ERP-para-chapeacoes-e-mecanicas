@@ -1,11 +1,8 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { FiLogIn } from 'react-icons/fi';
-
 import api from '../../services/api';
-
 import './styles.css';
-
 import logoImg from '../../assets/teste.PNG';
 
 export default function Logon() {
@@ -18,18 +15,14 @@ export default function Logon() {
         
         try {
             const response = await api.post('sessao', { login, senhaDigitada });
-            /*alert(response.data);*/
 
             localStorage.setItem('usuarioLogin', login);
-            /*var jsonAux = JSON.stringify(response.data.idUsuario);*/
-            localStorage.setItem('idUsuario', parseInt(response.data));
-             
+            localStorage.setItem('idUsuario', parseInt(response.data));             
             histoy.push('/dashboard');  
             
         }catch(err) {
             alert('Login ou Senha Incorretos!');
         }
-
     }
 
     return (
@@ -58,9 +51,7 @@ export default function Logon() {
                         Não tenho acesso
                     </Link>
                 </form>
-            </section>
-
-            
+            </section>            
         </div>
     );
 }

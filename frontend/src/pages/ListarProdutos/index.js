@@ -1,17 +1,13 @@
 import React, { useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
-import { FiLogIn, FiPower, FiEdit } from 'react-icons/fi';
+import { FiEdit } from 'react-icons/fi';
 import api from '../../services/api';
 import './styles.css';
 import Menu from '../Menu/index.js';
-import logoImg from '../../assets/logo2.png';
 import { useEffect } from 'react';
 import {MdDeleteForever} from 'react-icons/md';
 
 export default function ListarProdutos() {
     const [produtos, setProdutos] = useState([]);
-   const [descricaoProduto, setDescricaoProduto] = useState([]);
-    const history = useHistory();
 
     const idUsuario = localStorage.getItem('idUsuario');
 
@@ -47,17 +43,6 @@ export default function ListarProdutos() {
             
             <div className="content">
                 <h1>Produtos Cadastrados</h1>
-
-                {/*
-                <input
-                 type="text" 
-                 value={descricaoProduto}
-                 onChange={e => setDescricaoProduto(e.target.value)}
-                 />
-                 {descricaoProduto}*/
-                }
-                 
-
                 <table>
                     <thead>
                         <tr>

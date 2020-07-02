@@ -17,14 +17,12 @@ export default function Register() {
     const [cep, setCep] = useState('');
     const [rua, setRua] = useState('');
     const [n, setN] = useState('');
-    const [uf, setUf] = useState('');
-    
+    const [uf, setUf] = useState('');    
 
     const history = useHistory();
 
     async function handleRegister(e) {
-        e.preventDefault();
-                
+        e.preventDefault();                
 
         const data = {
             login,
@@ -41,30 +39,21 @@ export default function Register() {
         };
 
         try {
-            /*const response = await api.post('usuario', data);*/
             await api.post('usuario', data);
             alert('Cadastrado com Sucesso!.');
             history.push('/');
-
-            /*alert(`Seu ID : ${response.data.idUsuario}`);*/
-
             
         } catch(err) {
             alert('Erro no cadastro, tente novamente.');
-            /*console.log(err);*/
-
         }
     }
 
     const [ufs, setUfs] = useState([]);
-    //const [selectedUf, setSelectedUf] = useState('0');
     const [cities, setCities] = useState([]);
-    //const [selectedCity, setSelectedCity] = useState('0');
 
     useEffect(() => {
         axios.get('https://servicodados.ibge.gov.br/api/v1/localidades/estados').then(response => {
             const ufInitials = response.data.map(uf => uf.sigla);
-
             setUfs(ufInitials);
         });
     }, []);
@@ -76,21 +65,17 @@ export default function Register() {
 
         axios.get(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${uf}/municipios`).then(response => {
             const cityNames = response.data.map(city => city.nome);
-
             setCities(cityNames);
-
       });
     }, [uf]);
 
     function handleSelectUf(event) {
         const uf = event.target.value;
-
         setUf(uf);
     }
 
     function handleSelectCity(event) {
         const city = event.target.value;
-
         setCidade(city);
     }
 
@@ -153,18 +138,6 @@ export default function Register() {
                             <option key={city} value={city}>{city}</option>
                         ))}
                      </select>
-
-                      {/*<input
-                      placeholder="Cidade"
-                      value={cidade}
-                      onChange={e => setCidade(e.target.value)}
-                      />
-                    <input 
-                     placeholder="UF" 
-                     style={{ width: 80 }} 
-                     value={uf}
-                     onChange={e => setUf(e.target.value)}                     
-                     />*/}
                  </div>
                  <input 
                   placeholder="Bairro"
@@ -189,7 +162,6 @@ export default function Register() {
                      value={cep}
                      onChange={e => setCep(e.target.value)}
                      />
-
                  <button className="button" type="submit">Cadastrar</button>
                 </form>
             </div>

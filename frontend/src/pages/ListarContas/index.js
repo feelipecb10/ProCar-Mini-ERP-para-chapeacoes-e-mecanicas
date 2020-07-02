@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useHistory } from 'react-router-dom';
 import { FiEdit } from 'react-icons/fi';
 import {MdDeleteForever} from 'react-icons/md';
 import api from '../../services/api';
@@ -10,10 +9,8 @@ import Menu from '../Menu/index.js';
 export default function ListarContas() {
     const [contas, setContas] = useState([]);
     const [tipoTitulo, setTipoTitulo] = useState([]);
-    const history = useHistory();
 
-    const idUsuario = localStorage.getItem('idUsuario');  
-
+    const idUsuario = localStorage.getItem('idUsuario'); 
 
     useEffect(() => {
         api.get('lancamento', {
@@ -25,7 +22,6 @@ export default function ListarContas() {
         setContas(response.data);
         })
     }, [idUsuario]);
-
 
     async function updateConta(idFinanceiro) {
         try{
@@ -42,8 +38,7 @@ export default function ListarContas() {
         console.log(idUsuario, idFinanceiro);
         }
     }
-
-    
+        
     return(
         <div className="listar-contas-container">
 
@@ -76,7 +71,7 @@ export default function ListarContas() {
                     </thead>
 
                     <tbody>
-                        {contas.filter(contas => contas.tipo_titulo == tipoTitulo ).map(conta => (
+                        {contas.filter(contas => contas.tipo_titulo === tipoTitulo ).map(conta => (
                             <tr key={conta.idFinanceiro}>
                             <td>{conta.idFinanceiro}</td>
                             <td>{conta.numero_documento}</td>

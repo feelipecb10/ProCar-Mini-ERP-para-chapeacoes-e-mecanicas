@@ -1,5 +1,4 @@
 const connection = require('../database/connection');
-const { production } = require('../../knexfile');
 
 module.exports = {
     async index(request, response) {

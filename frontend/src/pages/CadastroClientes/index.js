@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useHistory } from 'react-router-dom';
-import { FiLogIn, FiPower } from 'react-icons/fi';
+import { useHistory } from 'react-router-dom';
 import api from '../../services/api';
 import './styles.css';
 import Menu from '../Menu/index.js';
 import logoImg from '../../assets/logo2.png';
 import axios from 'axios';
-
-
 
 export default function CadastroClientes() {
     const [nome, setNome] = useState('');
@@ -22,12 +19,10 @@ export default function CadastroClientes() {
     const [uf, setUf] = useState('');
     const idUsuario = localStorage.getItem('idUsuario');
 
-    const history = useHistory();
-    
+    const history = useHistory();    
 
     async function handleRegister(e) {
-        e.preventDefault();
-        
+        e.preventDefault();        
 
         const data = {
             nome,
@@ -40,12 +35,10 @@ export default function CadastroClientes() {
             rua,
             n,           
             uf,
-            /*idUsuario,*/
         };
 
         
-        try {
-            /*alert(`Seu ID de acesso: ${idUsuario}`);*/          
+        try {        
             await api.post('cliente', data, {
                 headers: {
                     autorizacao: idUsuario,
@@ -53,18 +46,13 @@ export default function CadastroClientes() {
             })
             alert('Cliente Cadastrado com Sucesso!');
             history.push('/listar-clientes');
-            /*alert(`Seu ID de acesso: ${response.data.idUsuario}`);*/
-
-            /*history.push('/');*/
         } catch(err) {
             alert('Erro no cadastro, tente novamente.');
         }
     }
 
     const [ufs, setUfs] = useState([]);
-    //const [selectedUf, setSelectedUf] = useState('0');
     const [cities, setCities] = useState([]);
-    //const [selectedCity, setSelectedCity] = useState('0');
 
     useEffect(() => {
         axios.get('https://servicodados.ibge.gov.br/api/v1/localidades/estados').then(response => {
@@ -81,21 +69,17 @@ export default function CadastroClientes() {
 
         axios.get(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${uf}/municipios`).then(response => {
             const cityNames = response.data.map(city => city.nome);
-
             setCities(cityNames);
-
       });
     }, [uf]);
 
     function handleSelectUf(event) {
         const uf = event.target.value;
-
         setUf(uf);
     }
 
     function handleSelectCity(event) {
         const city = event.target.value;
-
         setCidade(city);
     }
 
@@ -134,23 +118,7 @@ export default function CadastroClientes() {
                     value={telefone}
                     onChange={e => setTelefone(e.target.value)}
                     />
-                    <h1>Endereço</h1>
-                    <input 
-                    placeholder="Rua"
-                    value={rua}
-                    onChange={e => setRua(e.target.value)}
-                    />
-                    <input 
-                    placeholder="Número"
-                    value={n}
-                    onChange={e => setN(e.target.value)}
-                    />
-                    <input 
-                    placeholder="Bairro"
-                    value={bairro}
-                    onChange={e => setBairro(e.target.value)}
-                    /> 
-
+                    <h1>Endereço</h1>         
                     <div className="input-group">                  
                     <select onChange={handleSelectUf} value={uf}  name="uf" id="uf" style={{ width: 200 }} >
                         <option value="0">UF</option>
@@ -165,8 +133,22 @@ export default function CadastroClientes() {
                             <option key={city} value={city}>{city}</option>
                         ))}
                      </select>
-                    </div>    
-
+                    </div> 
+                    <input 
+                    placeholder="Bairro"
+                    value={bairro}
+                    onChange={e => setBairro(e.target.value)}
+                    />
+                    <input 
+                    placeholder="Rua"
+                    value={rua}
+                    onChange={e => setRua(e.target.value)}
+                    />
+                    <input 
+                    placeholder="Número"
+                    value={n}
+                    onChange={e => setN(e.target.value)}
+                    />
                     <input 
                     placeholder="CEP"
                     value={cep}

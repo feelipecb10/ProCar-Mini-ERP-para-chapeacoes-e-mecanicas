@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useHistory } from 'react-router-dom';
 import { FiEdit } from 'react-icons/fi';
 import {MdDeleteForever} from 'react-icons/md';
 import api from '../../services/api';
@@ -9,10 +8,7 @@ import Menu from '../Menu/index.js';
 
 export default function ConsultaOrcamento() {
     const [orcamentos, setOrcamentos] = useState([]);
-    const history = useHistory();
-
-    const idUsuario = localStorage.getItem('idUsuario');  
-
+    const idUsuario = localStorage.getItem('idUsuario'); 
 
     useEffect(() => {
         api.get('orcamento', {
@@ -25,21 +21,18 @@ export default function ConsultaOrcamento() {
         })
     }, [idUsuario]);
 
-
     async function deleteOrcamento(idOrcamento) {
         try{
          await api.delete(`orcamento/${idOrcamento}`, {
            headers: {
              autorizacao: idUsuario,
            }
-         });
-  
+         });  
          setOrcamentos(orcamentos.filter(orcamento => orcamento.idOrcamento !== idOrcamento));
     }catch(err){
         alert('Erro ao deletar orçamento, tente novamente.');
         }
     }
-
     
     return(
         <div className="consulta-orcamento-container">

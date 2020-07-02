@@ -1,12 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useHistory } from 'react-router-dom';
-import { FiLogIn, FiPower } from 'react-icons/fi';
+import React, { useState } from 'react';
 import api from '../../services/api';
 import './styles.css';
 import Menu from '../Menu/index.js';
 import logoImg from '../../assets/logo2.png';
-
-
 
 export default function UpdateCliente() {
     const [nome, setNome] = useState('');
@@ -20,10 +16,6 @@ export default function UpdateCliente() {
     const [n, setN] = useState('');
     const [uf, setUF] = useState('');
     const idUsuario = localStorage.getItem('idUsuario');
-    const idCliente = localStorage.getItem('idCliente');
-
-
-    const history = useHistory();
 
     async function updateCliente(idCliente){
         const data = {
@@ -50,22 +42,7 @@ export default function UpdateCliente() {
             alert('Erro ao Modificar Cliente, tente novamente.');
         }
     }
-
-
     
-    const [clientes, setClientes] = useState([]);
-    useEffect(() => {
-        api.get('cliente', {
-        headers: {
-            autorizacao: idUsuario,
-        }
-        }).then(response => {
-        setClientes(response.data);
-        })
-    }, [idUsuario]);
-
-
-
     return (        
         <div className="cadastro-container">
             <div className="menu">
